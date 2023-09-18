@@ -1,36 +1,43 @@
-#ifndef MAIN_H
-#define MAIN_H
-
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdlib.h>
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
 
 /**
- * struct structprint - structure containing
- * @q: the location and method to translate data to characters.
- * @u: print function for specific type.
- *
- * Return: int
- */
-typedef struct structprint
+* main - Entry point
+*
+* Return: Always 0
+*/
+int main(void)
 {
-	char *q;
-	int (*u)(char *format, va_list);
-} structype;
-
-int _putchar(char ch);
-int _puts(char *string);
-int printc(char *format, va_list);
-int printstr(char *format, va_list);
-int (*driver(char *format))(char *format, va_list);
-int _printf(char *format, ...);
-int printint(char *format, va_list pa);
-int integer(int number);
-int contadordigit(int number);
-int _abs(int number);
-int printpercent(char *format, va_list pa);
-int printhex(char *format, va_list);
-int printHEX(char *format, va_list);
-int printocta(char *format, va_list);
-int print_unsign(char *format, va_list);
-#endif
+int len;
+int len2;
+unsigned int ui;
+void *addr;
+len = _printf("Let's try to printf a simple sentence.\n");
+len2 = printf("Let's try to printf a simple sentence.\n");
+ui = (unsigned int)INT_MAX + 1024;
+addr = (void *)0x7ffe637541f0;
+_printf("Length:[%d, %i]\n", len, len);
+printf("Length:[%d, %i]\n", len2, len2);
+_printf("Negative:[%d]\n", -762534);
+printf("Negative:[%d]\n", -762534);
+_printf("Unsigned:[%u]\n", ui);
+printf("Unsigned:[%u]\n", ui);
+_printf("Unsigned octal:[%o]\n", ui);
+printf("Unsigned octal:[%o]\n", ui);
+_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+_printf("Character:[%c]\n", 'H');
+printf("Character:[%c]\n", 'H');
+_printf("String:[%s]\n", "I am a string !");
+printf("String:[%s]\n", "I am a string !");
+_printf("Address:[%p]\n", addr);
+printf("Address:[%p]\n", addr);
+len = _printf("Percent:[%%]\n");
+len2 = printf("Percent:[%%]\n");
+_printf("Len:[%d]\n", len);
+printf("Len:[%d]\n", len2);
+_printf("Unknown:[%r]\n");
+printf("Unknown:[%r]\n");
+return (0);
+}
